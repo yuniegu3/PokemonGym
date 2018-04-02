@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'variables-mixins';
+
+#buttons {
+  margin-top: 2px;
+  text-align: center;
+  #left {
+    height: $button-size;
+    width: $button-size;
+    border-top: $button-size solid $button-color;
+    padding: 0;
+    border-bottom-left-radius: 100px;
+  }
+  #right {
+    width: $button-size;
+    height: $button-size;
+    border-top: $button-size solid $button-color;
+    border-bottom-right-radius: 100px;
+    padding: 0;
+  }
+  #middle {
+    height: $button-size + 1;
+    width: $button-size / 2;
+    background-color: $button-color;
+    padding: 0;
+  }
+}

@@ -1,0 +1,9 @@
+@import 'colors';
+@import 'variables-mixins';
+
+.pokedex-bottom {
+  @include top-bottom;
+  background: linear-gradient(135deg, #f5f9f0 0%,#f9fcf7 100%);
+  border: $simple-border;
+  border-radius: 0 0 10px 10px;
+}

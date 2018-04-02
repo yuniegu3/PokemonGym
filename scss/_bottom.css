@@ -1,0 +1,9 @@
+.pokedex-bottom {
+  margin: auto;
+  height: 150px;
+  width: 300px;
+  background: linear-gradient(135deg, #f5f9f0 0%, #f9fcf7 100%);
+  border: 1px solid black;
+  border-radius: 0 0 10px 10px; }
+
+/*# sourceMappingURL=_bottom.css.map */
