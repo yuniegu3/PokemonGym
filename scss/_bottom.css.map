@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,eAAgB;ECSd,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EDTZ,UAAU,EAAE,iDAAgD;EAC5D,MAAM,ECNQ,eAAe;EDO7B,aAAa,EAAE,aAAa",
+"sources": ["_bottom.scss","_variables-mixins.scss"],
+"names": [],
+"file": "_bottom.css"
+}

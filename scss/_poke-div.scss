@@ -1,0 +1,67 @@
+@import 'colors';
+@import 'variables-mixins';
+
+.single-pokemon-div {
+  height: $full-fit;
+  .permanent-stats {
+    text-align: center;
+    height: $full-fit;
+    h2 {
+      @include heading-style;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h4 {
+      font-size: 1.2em;
+      font-weight: 500;
+      line-height: $full-fit;
+    }
+    p {
+      width: 25%;
+      display: inline-block;
+      margin: 5% 12.5%;
+      text-align: center;
+      &.poke-num {
+        font-weight: 600;
+      }
+    }
+    .ability-list {
+      padding: 0;
+      column-count: 2;
+      list-style-type: none;
+      .hidden-ability {
+        font-style: italic;
+        opacity: 0.5;
+      }
+    }
+  }
+  .pokemon-image-container {
+    height: $full-fit;
+    text-align: center;
+    img {
+      height: $full-fit;
+    }
+  }
+  .current-stats {
+    height: $full-fit;
+
+    h2 {
+      @include heading-style;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .stat-list {
+      .stat {
+        display: block;
+        .stat-type {
+          padding-left: 10%;
+        }
+        .stat-value {
+          float: right;
+          padding-right: 10%;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

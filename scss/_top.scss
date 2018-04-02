@@ -1,0 +1,32 @@
+@import 'colors';
+@import 'variables-mixins';
+
+.pokedex-top {
+  @include top-bottom;
+  background: linear-gradient(-45deg, #ff3019 0%, #cf0404 100%);
+  border: $simple-border;
+  border-bottom: 20px solid black;
+  border-radius: 10px 10px 0 0;
+
+  .toggle-container {
+    height: $toggle-button-size * 2;
+    width: $toggle-button-size * 2;
+    background-color: white;
+    position:absolute;
+    margin-top: 112.5px;
+    margin-left: 125px;
+    z-index: 10;
+    border: $simple-border;
+    border-radius: $toggle-button-size * 2;
+
+    #toggle-screen{
+      height: $toggle-button-size;
+      width: $toggle-button-size;
+      border-radius: $toggle-button-size;
+      background-color: $grey;
+      margin-top:25%;
+      margin-left: 25%;
+      animation: blink 4s infinite;
+    }
+  }
+}

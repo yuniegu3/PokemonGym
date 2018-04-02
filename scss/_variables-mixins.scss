@@ -1,0 +1,16 @@
+$simple-border: 1px solid black;
+$button-size: 35px;
+$toggle-button-size: 25px;
+$full-fit: 100%;
+
+@mixin heading-style {
+  font-size: 2em;
+  line-height: 110%;
+  font-weight: 600;
+}
+
+@mixin top-bottom {
+  margin: auto;
+  height: 150px;
+  width: 300px;
+}

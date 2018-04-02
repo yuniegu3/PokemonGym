@@ -1,0 +1,67 @@
+@import 'colors';
+@import 'variables-mixins';
+@import 'top';
+@import 'drop-down';
+@import 'poke-div';
+@import 'buttons';
+@import 'bottom';
+
+html {
+  background: url("../backgrounds/background4.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  text-transform: capitalize;
+}
+
+#pokedex-container {
+  margin-top: 15%;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+
+  #screen-container {
+    margin: auto;
+    height: 290px;
+    width: 290px;
+    border: 0.1px solid black;
+    border-bottom-color: $screen-color;
+    border-top-color: $screen-color;
+    background-color: $screen-color;
+    #window-screen {
+      background-color: #c8f5fd;
+      height: 80%;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5%;
+      border: 2px solid #9eccd4;
+      #pokeball-container {
+        height: $full-fit;
+        text-align: center;
+        img {
+          width: 30%;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+@keyframes blink {
+  0% { background: $grey; }
+  50% { background: #ff1a1a; }
+  100% { background: $grey; }
+}

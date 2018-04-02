@@ -1,0 +1,52 @@
+.single-pokemon-div {
+  height: 100%; }
+  .single-pokemon-div .permanent-stats {
+    text-align: center;
+    height: 100%; }
+    .single-pokemon-div .permanent-stats h2 {
+      font-size: 2em;
+      line-height: 110%;
+      font-weight: 600;
+      margin: 0 auto;
+      text-align: center; }
+    .single-pokemon-div .permanent-stats h4 {
+      font-size: 1.2em;
+      font-weight: 500;
+      line-height: 100%; }
+    .single-pokemon-div .permanent-stats p {
+      width: 25%;
+      display: inline-block;
+      margin: 5% 12.5%;
+      text-align: center; }
+      .single-pokemon-div .permanent-stats p.poke-num {
+        font-weight: 600; }
+    .single-pokemon-div .permanent-stats .ability-list {
+      padding: 0;
+      column-count: 2;
+      list-style-type: none; }
+      .single-pokemon-div .permanent-stats .ability-list .hidden-ability {
+        font-style: italic;
+        opacity: 0.5; }
+  .single-pokemon-div .pokemon-image-container {
+    height: 100%;
+    text-align: center; }
+    .single-pokemon-div .pokemon-image-container img {
+      height: 100%; }
+  .single-pokemon-div .current-stats {
+    height: 100%; }
+    .single-pokemon-div .current-stats h2 {
+      font-size: 2em;
+      line-height: 110%;
+      font-weight: 600;
+      margin: 0 auto;
+      text-align: center; }
+    .single-pokemon-div .current-stats .stat-list .stat {
+      display: block; }
+      .single-pokemon-div .current-stats .stat-list .stat .stat-type {
+        padding-left: 10%; }
+      .single-pokemon-div .current-stats .stat-list .stat .stat-value {
+        float: right;
+        padding-right: 10%;
+        font-weight: 600; }
+
+/*# sourceMappingURL=_poke-div.css.map */

@@ -1,0 +1,22 @@
+#buttons {
+  margin-top: 2px;
+  text-align: center; }
+  #buttons #left {
+    height: 35px;
+    width: 35px;
+    border-top: 35px solid #9eccd4;
+    padding: 0;
+    border-bottom-left-radius: 100px; }
+  #buttons #right {
+    width: 35px;
+    height: 35px;
+    border-top: 35px solid #9eccd4;
+    border-bottom-right-radius: 100px;
+    padding: 0; }
+  #buttons #middle {
+    height: 36px;
+    width: 17.5px;
+    background-color: #9eccd4;
+    padding: 0; }
+
+/*# sourceMappingURL=_buttons.css.map */

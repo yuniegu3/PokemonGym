@@ -1,0 +1,44 @@
+#screen-container {
+  margin: auto;
+  height: 290px;
+  width: 290px;
+  border: 0.1px solid black;
+  border-bottom-color: #AFE3EC;
+  border-top-color: #AFE3EC;
+  background-color: #AFE3EC; }
+  #screen-container #window-screen {
+    background-color: #c8f5fd;
+    height: 80%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    border: 2px solid #9eccd4; }
+    #screen-container #window-screen #pokeball-container {
+      height: 100%;
+      text-align: center; }
+      #screen-container #window-screen #pokeball-container img {
+        width: 30%;
+        margin: auto; }
+  #screen-container #buttons {
+    margin-top: 2px;
+    text-align: center; }
+    #screen-container #buttons #left {
+      height: 35px;
+      width: 35px;
+      border-top: 35px solid #9eccd4;
+      padding: 0;
+      border-bottom-left-radius: 100px; }
+    #screen-container #buttons #right {
+      width: 35px;
+      height: 35px;
+      border-top: 35px solid #9eccd4;
+      border-bottom-right-radius: 100px;
+      padding: 0; }
+    #screen-container #buttons #middle {
+      height: 36px;
+      width: 17.5px;
+      background-color: #9eccd4;
+      padding: 0; }
+
+/*# sourceMappingURL=_drop-down.css.map */

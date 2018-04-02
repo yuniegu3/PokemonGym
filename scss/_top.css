@@ -1,0 +1,28 @@
+.pokedex-top {
+  margin: auto;
+  height: 150px;
+  width: 300px;
+  background: linear-gradient(-45deg, #ff3019 0%, #cf0404 100%);
+  border: 1px solid black;
+  border-bottom: 20px solid black;
+  border-radius: 10px 10px 0 0; }
+  .pokedex-top .toggle-container {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    position: absolute;
+    margin-top: 112.5px;
+    margin-left: 125px;
+    z-index: 10;
+    border: 1px solid black;
+    border-radius: 50px; }
+    .pokedex-top .toggle-container #toggle-screen {
+      height: 25px;
+      width: 25px;
+      border-radius: 25px;
+      background-color: grey;
+      margin-top: 25%;
+      margin-left: 25%;
+      animation: blink 4s infinite; }
+
+/*# sourceMappingURL=_top.css.map */
