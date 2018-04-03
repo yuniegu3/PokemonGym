@@ -1,0 +1,74 @@
+@import 'colors';
+
+$simple-border: 1px solid black;
+$button-size: 35px;
+$toggle-button-size: 25px;
+$full-fit: 100%;
+
+@mixin heading-style {
+  font-size: 2em;
+  line-height: 110%;
+  font-weight: 600;
+}
+
+@mixin top-bottom {
+  margin: auto;
+  height: 150px;
+  width: 300px;
+}
+
+@mixin toggle-screen {
+	height: $toggle-button-size;
+    width: $toggle-button-size;
+    border-radius: $toggle-button-size;
+    background-color: $grey;
+    margin-top:25%;
+    margin-left: 25%;
+    animation: blink 4s infinite;
+}
+@mixin screen-container {
+  margin: auto;
+  height: 290px;
+  width: 290px;
+  border: 0.1px solid black;
+  border-bottom-color: $screen-color;
+  border-top-color: $screen-color;
+  background-color: $screen-color;
+}
+@mixin window-screen {
+    background-color: $screen-container-bgcolor;
+    height: 80%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    border: 2px solid $screen-container-bordercolor;
+}
+
+@mixin buttons {
+   margin-top: 2px;
+  text-align: center;
+}
+
+@mixin left-button {
+    height: $button-size;
+    width: $button-size;
+    border-top: $button-size solid $button-color;
+    padding: 0;
+    border-bottom-left-radius: 100px;
+}
+
+@mixin right-button {
+    width: $button-size;
+    height: $button-size;
+    border-top: $button-size solid $button-color;
+    border-bottom-right-radius: 100px;
+    padding: 0;
+}
+
+@mixin middle-button {
+    height: $button-size + 1;
+    width: $button-size / 2;
+    background-color: $button-color;
+    padding: 0;
+}

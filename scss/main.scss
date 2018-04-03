@@ -1,13 +1,13 @@
-@import 'colors';
-@import 'variables-mixins';
-@import 'top';
-@import 'drop-down';
-@import 'poke-div';
-@import 'buttons';
-@import 'bottom';
+@import 'partials/colors';
+@import 'partials/variables-mixins';
+@import 'partials/top';
+@import 'partials/drop-down';
+@import 'partials/poke-div';
+@import 'partials/buttons';
+@import 'partials/bottom';
 
 html {
-  background: url("../backgrounds/background4.jpg") no-repeat center center fixed; 
+  background: url("../images/background4.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
