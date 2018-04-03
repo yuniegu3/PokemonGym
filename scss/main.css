@@ -24,6 +24,14 @@
       margin-top: 25%;
       margin-left: 25%;
       animation: blink 4s infinite; }
+    .pokedex-top .toggle-container #toggle-screen2 {
+      height: 25px;
+      width: 25px;
+      border-radius: 25px;
+      background-color: grey;
+      margin-top: 25%;
+      margin-left: 25%;
+      animation: blink 4s infinite; }
 
 #screen-container1 {
   margin: auto;
@@ -45,6 +53,29 @@
       height: 100%;
       text-align: center; }
       #screen-container1 #window-screen1 #pokeball-container1 img {
+        width: 30%;
+        margin: auto; }
+
+#screen-container2 {
+  margin: auto;
+  height: 290px;
+  width: 290px;
+  border: 0.1px solid black;
+  border-bottom-color: #AFE3EC;
+  border-top-color: #AFE3EC;
+  background-color: #AFE3EC; }
+  #screen-container2 #window-screen2 {
+    background-color: #c8f5fd;
+    height: 80%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    border: 2px solid #9eccd4; }
+    #screen-container2 #window-screen2 #pokeball-container2 {
+      height: 100%;
+      text-align: center; }
+      #screen-container2 #window-screen2 #pokeball-container2 img {
         width: 30%;
         margin: auto; }
 
@@ -120,6 +151,27 @@
     background-color: #9eccd4;
     padding: 0; }
 
+#buttons2 {
+  margin-top: 2px;
+  text-align: center; }
+  #buttons2 #left2 {
+    height: 35px;
+    width: 35px;
+    border-top: 35px solid #9eccd4;
+    padding: 0;
+    border-bottom-left-radius: 100px; }
+  #buttons2 #right2 {
+    width: 35px;
+    height: 35px;
+    border-top: 35px solid #9eccd4;
+    border-bottom-right-radius: 100px;
+    padding: 0; }
+  #buttons2 #middle2 {
+    height: 36px;
+    width: 17.5px;
+    background-color: #9eccd4;
+    padding: 0; }
+
 .pokedex-bottom {
   margin: auto;
   height: 150px;
@@ -144,7 +196,18 @@ body {
   margin-top: 15%;
   width: 350px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  display: inline; }
+
+#pokedex1 {
+  float: left;
+  margin-top: 15%;
+  margin-left: 10%; }
+
+#pokedex2 {
+  float: right;
+  margin-top: 15%;
+  margin-right: 10%; }
 
 .hidden {
   display: none; }
