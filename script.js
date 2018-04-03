@@ -1,0 +1,289 @@
+let charmander = {}
+let raichu = {}
+let jolteon = {}
+let growlithe = {}
+let eevee = {}
+let absol = {}
+// just make sure pokeArray gets resetted after passed through Trainer constructor
+let pokeArray = []
+// undefined means that info is not in there but something will be in there at some point
+let trainer = undefined
+let trainer2 = undefined
+
+//pokemon constructor takes a hash full of poke-data
+class Pokemon {
+  constructor(args) {
+    this.name = args.name
+    this.image = args.image
+    this.abilities = args.abilities
+    this.stats = args.stats
+  }
+}
+
+//trainer constructor take a name and an array of pokemon objects
+class Trainer {
+  constructor(name, minions){
+    this.name = name
+    this.minions = minions || []
+  }
+
+ //returns the array of pokemon
+  all(){
+    return this.minions
+  }
+
+  //takes a string (pokemon name) and returns the data about that dude
+  get(pokemon){
+    let collection = this.minions.filter(function(monster){return monster.name === pokemon})
+    return collection.length === 1 ? collection[0] : collection
+  }
+}
+
+//will be populated with the ajax response data then passed to pokemon constructor
+let pokeHash = {
+  name: "",
+  image: "",
+  abilities: [],
+  stats: []
+}
+
+getStats = (response) => {
+  //pass each statistic into the setStats function
+  response.stats.map(function(statistic){pokeHash.stats.push(setStats(statistic))})
+}
+
+//create a key value pair for each stat and it's base value, then push into the stat array contained within the pokeHash
+function setStats(statistic) {
+  let obj = {}
+  let name = statistic.stat.name
+  let baseValue = statistic.base_stat
+  obj[name] = baseValue
+  return obj
+}
+
+getAbilities = (response) => {
+  //map through the abilities array and create a hash out of each ability - contains its name and if it is hidden
+  response.abilities.map(function(power){pokeHash.abilities.push({name: power.ability.name, isHidden: power.is_hidden})})
+  
+}
+
+//takes a pokemon name or id number and uses that parameter as the tail of the api call
+function catchPokemon(pokeNameOrIdNumber){
+  //must return the result of the ajax call
+  return $.ajax({
+    url: "https://pokeapi.co/api/v2/pokemon/" + pokeNameOrIdNumber,
+    success: function(response){
+      //populate the pokeHash with the ajax response
+      pokeHash.name = response.name
+      pokeHash.image = response.sprites.front_default
+      getAbilities(response)
+      getStats(response)
+      //create a new pokemon
+      let pokemon = new Pokemon(pokeHash)
+      //clear the array of stats so that it's specific to the pokemon (REFACTOR?)
+      pokeHash.stats = []
+      pokeHash.abilities = []
+      //return the pokemon
+      pokeArray.push(pokemon)
+      console.log(pokemon)
+    },
+    error: function(error){
+      console.log(error)
+    }
+  })
+}
+
+checkIfAbilityHidden = (ability, list) => {
+  if (ability.isHidden) {
+    $("<li/>").text(ability.name).addClass("hidden-ability ability").appendTo(list)
+  } else {
+    $("<li/>").text(ability.name).addClass("ability").appendTo(list)
+  }
+}
+
+generateAbilities = (pokemon) => {
+  let abilitiesList = $("<ul/>").addClass("ability-list")
+  pokemon.abilities.forEach((ability) => {checkIfAbilityHidden(ability, abilitiesList)})
+  return abilitiesList
+}
+
+generatePermanentStats = (pokemon, container) => {
+  let name = pokemon.name
+  //create a container div for permanent stats
+  let permanentStats = $("<div/>").addClass(`permanent-stats ${name} hidden`)
+
+  //put perm stats in respective html elements
+  let nameEl = $("<h2/>").text(name).addClass("name")
+
+  //create a list of abilities
+  let abilityListTitle = $("<h4/>").text("Abilities")
+  let abilitiesList = generateAbilities(pokemon)
+
+  //append each of these elements to the permanent stats div and then perm stats to container
+  let pokeInfo = [nameEl,abilityListTitle,abilitiesList]
+  pokeInfo.forEach((e) => {$(e[0]).appendTo(permanentStats)})
+  $(permanentStats).appendTo(container)
+}
+
+generateImageDiv = (pokemon, container) => {
+  //create separate div container for image and append it
+  let imageCont = $("<div/>").addClass("pokemon-image-container")
+  // image: "",
+  let pic = $("<img/>").attr("src", pokemon.image).addClass(name)
+  let thumbnail = $("<img/>").attr("src", pokemon.image).addClass(`thumbnail thumb ${name} hidden`)
+  $(pic).appendTo(imageCont)
+  $(thumbnail).appendTo("#pokeball-container")
+  $(imageCont).appendTo(container) 
+}
+
+
+generateHealthStats = (pokemon, container) => {
+  let name = pokemon.name
+  //create a container div for current stats
+  let currentStats = $("<div/>").addClass(`current-stats hidden ${name}`)
+  let healthListTitle = $("<h2/>").text(name + "'s Stats")
+  $(healthListTitle).appendTo(currentStats)
+  let healthList = $("<ul/>").addClass("stat-list")
+  pokemon.stats.forEach((stat) => {$("<li/>").html("<span class='stat-type'>" + Object.keys(stat)[0] + ":</span> <span class='stat-value'>" + Object.values(stat)[0] + "</span>").addClass("stat").appendTo(healthList)})
+  $(healthList).appendTo(currentStats)
+  $(currentStats).appendTo(container)
+}
+
+pokeContainer = (pokemon) => {
+  let name = pokemon.name
+  //create encompassing div for all individual pokemon data
+  let pokeDivContainer = $("<div/>").addClass(`single-pokemon-div ${name} hidden`)
+
+  generatePermanentStats(pokemon, pokeDivContainer)
+
+  generateImageDiv(pokemon, pokeDivContainer)
+
+  generateHealthStats(pokemon, pokeDivContainer)
+
+  return pokeDivContainer
+}
+
+// Alex is working on the parts below. Don't rename or change.
+
+
+createContainer = (pokemon) => {
+  let newDiv = pokeContainer(trainer.get(pokemon))
+  $(newDiv).appendTo("#window-screen")
+}
+
+
+//each function call will create a new pokemon. must use the .done() callback in order to only push the pokemon into the poke array once the ajax call has completed and the pokemon has been initialized (then the next pokemon, and the next)
+//trying to create container function so that its not doing both at the same time.
+let aPoke = function(){
+catchPokemon("4").done(catchPokemon("26")).done(catchPokemon("135")).done(function(result){
+  //once you have all of your pokemon, you can initialize a new trainer with your pokemon array
+  trainer = new Trainer("trainer", pokeArray)
+  }).done(function(trainer){
+    createContainer("charmander")}).then(function(trainer){
+    createContainer("raichu")}).then(function(trainer){
+    createContainer("jolteon")}).then(function(trainer){
+    pokeArray.length = 0
+    signalLoad()});
+}
+
+let yPoke = function(){
+catchPokemon("58").done(catchPokemon("133")).done(catchPokemon("359")).done(function(result){
+  //once you have all of your pokemon, you can initialize a new trainer with your pokemon array
+  trainer = new Trainer("trainer2", pokeArray)
+  }).done(function(trainer2){
+    createContainer("growlithe")}).then(function(trainer2){
+    createContainer("eevee")}).then(function(trainer2){
+    createContainer("absol")}).then(function(trainer2){
+    pokeArray.length = 0
+    signalLoad()});
+}
+
+let pokemonDivName
+let pokeballDiv = $("#pokeball-container")
+
+$("#pokeball1").hover(function(){
+  $(this).attr("src", trainer.minions[0].image)
+}, function(){
+  $(this).attr("src", "images/pokeball.png")
+}).on("click", function(){
+  $(pokeballDiv).addClass("hidden")
+  pokemonDivName = ".single-pokemon-div." + trainer.minions[0].name
+  $(pokemonDivName).removeClass("hidden") //switch to remove class once buttons
+})
+//You can probably use a filter to find the right name.. later
+
+$("#pokeball2").hover(function(){
+  $(this).attr("src", trainer.minions[1].image)
+}, function(){
+  $(this).attr("src", "images/pokeball.png")
+}).on("click", function(){
+  $(pokeballDiv).addClass("hidden")
+  pokemonDivName = ".single-pokemon-div." + trainer.minions[1].name
+  $(pokemonDivName).removeClass("hidden") //switch to remove class once buttons
+})
+
+$("#pokeball3").hover(function(){
+  $(this).attr("src", trainer.minions[2].image)
+}, function(){
+  $(this).attr("src", "images/pokeball.png")
+}).on("click", function(){
+  $(pokeballDiv).addClass("hidden")
+  pokemonDivName = ".single-pokemon-div." + trainer.minions[2].name
+  $(pokemonDivName).removeClass("hidden") //switch to remove class once buttons
+})
+// the alex and yunie button thing
+
+$('#alexButton').click(function(){
+	aPoke()
+})
+
+$('#yunieButton').click(function(){
+	yPoke()
+})
+
+
+//Buttons:
+signalLoad = () => {
+  $("#toggle-screen").addClass("pulse");
+}
+
+$("#toggle-screen").on("click", function() {
+  $("#screen-container").toggleClass("hidden")
+})
+
+//Make pokeinfo disappear
+$("#middle").on("click", function(){
+  $(pokeballDiv).removeClass("hidden")
+  $(pokemonDivName).addClass("hidden")
+})
+
+$("#left").on("click", function(){
+  let perm = $(pokemonDivName+" > .permanent-stats")
+  let image = $(pokemonDivName+" > .pokemon-image-container")
+  let current = $(pokemonDivName+" > .current-stats")
+  // if current is shown, show image
+  if (!$(current).hasClass("hidden") && $(image).hasClass("hidden")) {
+    $(image).toggleClass("hidden")
+    $(current).toggleClass("hidden")
+  } else if (!$(image).hasClass("hidden") && $(current).hasClass("hidden")) {
+  //if permanent stats are hidden and image is shown, show perm stats
+    $(perm).toggleClass("hidden")
+    $(image).toggleClass("hidden")
+  }
+})
+
+$("#right").on("click", function(){
+  let perm = $(pokemonDivName+" > .permanent-stats")
+  let image = $(pokemonDivName+" > .pokemon-image-container")
+  let current = $(pokemonDivName+" > .current-stats")
+  //if image is hidden and current stats are hidden
+  if (!$(perm).hasClass("hidden") && $(image).hasClass("hidden")) {
+    $(image).toggleClass("hidden")
+    $(perm).toggleClass("hidden")
+  } else if (!$(image).hasClass("hidden")) {
+  //if current stats are hidden and image is shown, show current stats
+    $(current).toggleClass("hidden")
+    $(image).toggleClass("hidden")
+  }
+})
+

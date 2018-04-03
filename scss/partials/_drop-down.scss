@@ -1,0 +1,42 @@
+@import 'colors';
+@import 'variables-mixins';
+
+#screen-container1 {
+  // @extend #pokedex-container;
+  @include screen-container;
+
+    #window-screen1 {
+      @include window-screen;
+
+      #pokeball-container1 {
+       height: $full-fit;
+      text-align: center;
+      img {
+      width: 30%;
+      margin: auto;
+      }
+    }
+
+  }
+  
+}
+
+#screen-container2 {
+  // @extend #pokedex-container;
+  @include screen-container;
+
+  #window-screen2 {
+    @include window-screen;
+    
+    #pokeball-container2 {
+    height: $full-fit;
+      text-align: center;
+      img {
+      width: 30%;
+      margin: auto;
+      }
+    }
+
+  }
+  
+}

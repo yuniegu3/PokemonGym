@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'variables-mixins';
+
+#buttons1 {
+  @include buttons;
+    #left1 {
+    @include left-button;
+  }
+  #right1 {
+   @include right-button;
+  }
+  #middle1 {
+    @include middle-button;
+  }
+}
+
+#buttons2 {
+  @include buttons;
+  #left2 {
+    @include left-button;
+  }
+  #right2 {
+    @include right-button;
+  }
+  #middle2 {
+    @include middle-button;
+  }
+}

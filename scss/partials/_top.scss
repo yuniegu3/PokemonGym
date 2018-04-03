@@ -20,22 +20,10 @@
     border-radius: $toggle-button-size * 2;
 
     #toggle-screen1{
-      height: $toggle-button-size;
-      width: $toggle-button-size;
-      border-radius: $toggle-button-size;
-      background-color: $grey;
-      margin-top:25%;
-      margin-left: 25%;
-      animation: blink 4s infinite;
+      @include toggle-screen;
     }
     #toggle-screen2{
-      height: $toggle-button-size;
-      width: $toggle-button-size;
-      border-radius: $toggle-button-size;
-      background-color: $grey;
-      margin-top:25%;
-      margin-left: 25%;
-      animation: blink 4s infinite;
+      @include toggle-screen;
     }
   }
 }
