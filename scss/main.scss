@@ -25,36 +25,20 @@ body {
   width: 350px;
   margin-left: auto;
   margin-right: auto;
-
-  #screen-container {
-    margin: auto;
-    height: 290px;
-    width: 290px;
-    border: 0.1px solid black;
-    border-bottom-color: $screen-color;
-    border-top-color: $screen-color;
-    background-color: $screen-color;
-    #window-screen {
-      background-color: #c8f5fd;
-      height: 80%;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 5%;
-      border: 2px solid #9eccd4;
-      #pokeball-container {
-        height: $full-fit;
-        text-align: center;
-        img {
-          width: 30%;
-          margin: auto;
-        }
-      }
-    }
-  }
+  display: inline;
 }
 
+#pokedex1 {
+  float: left;
+  margin-top: 15%;
+  margin-left: 10%;
+}
 
+#pokedex2 {
+  float: right;
+  margin-top: 15%;
+  margin-right: 10%;
+}
 
 .hidden {
   display: none;
